@@ -23,7 +23,8 @@ library(hdm)
 
 The required functions that are used to perform the Post lasso estimators are loaded here:
 ```{r Post_lasso}
-load('lasso_ATT.R')
+source('lasso_ATT.R')
+source('sandImpACT.R')
 ```
 
 
