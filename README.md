@@ -1,4 +1,4 @@
-R Markdown
+Simulation
 ----------
 
 Here the packages that are neccesary to running the the simulation are
