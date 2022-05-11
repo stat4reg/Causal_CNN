@@ -62,3 +62,24 @@ time series data. Therefore, multiple time series are also controlled:
 The developed method based on CNN is implemented by using the package
 CausalDNN to perform the analysis on the population cohort who were born
 in 1946 and 1947 and survived till sixty one.
+
+### CNN Architecture
+
+Here is the code for running Cnn based aipw estimator for the average
+treatment effect on the treated. One can define any arbitrary deep
+neural network architecture and pass it to the function. though here we
+just used the default architecture that is convolutional with two layers
+with 128 and 64 filters in the layers respectively.
+
+``` r
+ATT = DNNCausal::aipw.att(Y=Observed_outcomes, T=Treatment, X_t=Timeseries_covariates,X = scalar_covariates, verbose=FALSE, epochs = c(64,32), batch_size = 500)
+```
+
+For running this model the following hyperparameters have been chosen.
+batch size is 500 and the number of epochs is 64 for the fitting outcome
+model. the number of epochs for training propensity score in this study
+is chosen to be 32.
+
+For each group en and women, and for each outcome years after treatment
+one to five, a similar code has been utilized to estimate the parameter
+of interest in that case.
