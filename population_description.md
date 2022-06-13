@@ -40,8 +40,8 @@ increased from a value less than one to a value above. Of course, we
 make sure that the measures do not fall below one so long as data has
 been recorded. Otherwise, the last rise is considered to determine the
 retirement year. In this analysis, the retirement age is considered a
-treatment in the way that who retired after 60 are defined as treated
-individuals, and who retired before or exactly at 60 are defined as
+treatment in the way that who retired exactly at 62 are defined as treated
+individuals, and who retired after 62 are defined as
 untreated. This research aims to control for available covariates to
 estimate the effect of the described treatment on average health
 conditions. The covariates we have controlled for them are: Gender,
