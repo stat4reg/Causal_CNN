@@ -81,6 +81,6 @@ batch size is 500 and the number of epochs is 64 for the fitting outcome
 model. the number of epochs for training propensity score in this study
 is chosen to be 32.
 
-For each group en and women, and for each outcome years after treatment
+For each group men and women, and for each outcome years after treatment
 one to five, a similar code has been utilized to estimate the parameter
 of interest in that case.
