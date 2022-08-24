@@ -48,7 +48,7 @@ time series data:
 
 -   Log of **LoneInk**: (10 years before treatment)
 -   **AldPens** (10 years before treatment)
--   **Unemployment** = **ArbLos**+**AmPol** (10 years before treatment)
+-   Unemployment = **ArbLos**+**AmPol** (10 years before treatment)
 -   **Fortid** (10 years before treatment)
 -   **SjukSum\_Belopp** (10 years before treatment)
 -   **Par\_SV** (number of Inpatient care days per year, 10 years)
