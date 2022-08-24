@@ -61,7 +61,7 @@ The variables Par\_SV and Par\_OV were provided by the Swedish National Board of
 ### CNN Architecture
 
 The developed methods in the manuscript based on Convolutional Neural Networks are implemented in the R-package
-[CausalDNN](https://github.com/stat4reg/DNNCausal).
+[DNNCausal](https://github.com/stat4reg/DNNCausal).
 
 The code below was used for running CNN based AIPW estimator for the average
 treatment effect on the treated as described in the manuscript. One can define any arbitrary deep
