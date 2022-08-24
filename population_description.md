@@ -32,25 +32,19 @@ In the second definition, the value **CSFVI** is considered, which corresponds t
 all recorded taxable incomes and is obtained from the Income and Taxation Register (IoT)
 register at Statistics Sweden. 
 
-Transfers from old-age pensions is obtained from the variable Aldpens (from LISA). 
-Whereas the main variable in the second definition (CSFVI)
-comes from the Income and Taxation Register (IoT) dataset. The measures
-are defined by: **P/ (I1 +1)** and **P/ (I2 +1)**, where P is the
-**Aldpens** and I2 is the Max (0, CSFVI - P).
+Transfers from old-age pensions is obtained from the variable Aldpens (from LISA).
 
-Therefore, the criteria for retirement year are when those measures
-increased from a value less than one to a value above. Of course, we
-make sure that the measures do not fall below one so long as data has
-been recorded. Otherwise, the last rise is considered to determine the
-retirement year. In this analysis, the retirement age is considered a
-treatment in the way that who retired exactly at 62 are defined as treated
-individuals, and who retired after 62 are defined as
-untreated. This research aims to control for available covariates to
-estimate the effect of the described treatment on average health
-conditions. The covariates we have controlled for them are: Gender,
-Marriage status, municipality, education level, and the number of
-biological children. Besides these scalar variables, we can control for
-time series data. Therefore, multiple time series are also controlled:
+We then use the relative differences: **P/ (I1 +1)** and **P/ (I2 +1)**, where P is the
+**Aldpens** and I2 is Max(0, CSFVI - P).
+
+Finally, an individual is considered treated (retiree at age 62) if alive and
+**P/ (I2 +1)** was below one before that age and above one at age 62. 
+
+
+Pre-treatment covariates that are considered as potential confounders in the study are:
+Gender, Marriage status, municipality, education level, and the number of
+biological children. Besides these scalar variables, we control for
+time series data:
 
 -   Log of LoneInk: (10 years before treatment)
 -   AldPens (10 years before treatment)
