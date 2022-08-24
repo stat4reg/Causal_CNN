@@ -1,8 +1,10 @@
+This repository includes supplementary material to the manuscript 
+Ghasempour, Moosavi and de Luna (2022, Convolutional neural networks for valid and efficient causal inference; soon to be published on arXiv.
+
 Simulation
 ----------
 
-Here the packages that are neccesary to running the the simulation are
-called.
+Below are the packages that are neccesary for running the simulation study.
 
 ``` r
 library(DNNCausal)
@@ -22,7 +24,9 @@ DGPs
 ----
 
 Three different Data generating processes were considered in the
-simulation. \#\#\# First DGP
+simulation study. 
+
+### First DGP
 
 ``` r
 DGP_1 <- function(N) {
@@ -208,7 +212,7 @@ DGP_4 <- function(N) {
 }
 ```
 
-The simulation function
+The R function to run the simulations
 -----------------------
 
 ``` r
