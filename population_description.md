@@ -1,23 +1,20 @@
-This file contains supplementary material on the study of the effects of early retirement on health
+This file contains supplementary material on the design of the study of the effects of early retirement on health
 reported in Ghasempour, Moosavi and de Luna (2022, Convolutional neural networks for valid and efficient causal inference; soon to be published on arXiv).
-The study is an observational study using Swedish register data from Statistics Sweden and the Swedish Nationa Board of Health and Welfare. 
+The study is an observational study using Swedish register data from Statistics Sweden and the Swedish Nationa Board of Health and Welfare, which were linked at the individual level at the Umeå SIMSAM Lab (https://www.umu.se/forskning/infrastruktur/umea-simsam-lab/).
+
+To study the effects of early retirement we consider those who were still alive at age 62, and either retire at age 62 ($T=1$, treatment) or retire later ($T=0$, control group). 
 
 ### Retirement indicator
 
-Two different criteria have been created to classify individuals as
-still working or retired. In both cases, the main intention is to
-compare the different amounts of income according to if they are sourced
-by pensions or not. Due to the retirement process that might end in up
-to five years to be completed, a threshold is needed for dividing people
-into two classes retired and non-retired. The threshold is used to
-determine what percentage of someone’s income must be pensions for
-counting them as retired. The distinction between the proposed criteria
-comes from the difference in calculating the total income excluding the
-pensions, and the first criteria is defined by:
+An individual alive at age 62 is considered as taking early retirement at that age if hers/his pension transfers become larger than income from work at that age for the first time (i.e., they were never so earlier).
+
+Two income from work definition were used and both gave similar results (the second one below corresponds to the results reported in the paper):
+
+First definition:
 
 > I1 = LoneInk+ArbLos+AmPol+Fortid+FInk+SjukSum\_belop,
 
-where the definition of these recorded statistics is:
+where the variables from the LISA register at Statistics Sweden:
 
 -   LoneInk: Cash gross salary
 -   ArbLos: Total income caused by unemployment
@@ -29,12 +26,14 @@ where the definition of these recorded statistics is:
     benefit, preventive sickness benefit, occupational injury benefit,
     and/or rehabilitation benefit.
 
-In the second definition, the value **CSFVI** is considered, which is
-recorded as all taxable incomes. The first set of variables is collected
-from the Integrated database for labor market research, Statistics
-Sweden. In addition to Aldpens that is the Total income from old-age
-pensions and is used in both criteria to compare with other kinds of
-incomes. Whereas the main variable in the second definition (CSFVI)
+Second definition: 
+
+In the second definition, the value **CSFVI** is considered, which corresponds to
+all recorded taxable incomes and is obtained from the Income and Taxation Register (IoT)
+register at Statistics Sweden. 
+
+Transfers from old-age pensions is obtained from the variable Aldpens (from LISA). 
+Whereas the main variable in the second definition (CSFVI)
 comes from the Income and Taxation Register (IoT) dataset. The measures
 are defined by: **P/ (I1 +1)** and **P/ (I2 +1)**, where P is the
 **Aldpens** and I2 is the Max (0, CSFVI - P).
