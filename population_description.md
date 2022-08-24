@@ -1,3 +1,7 @@
+This file contains supplementary material on the study of the effects of early retirement on health
+reported in Ghasempour, Moosavi and de Luna (2022, Convolutional neural networks for valid and efficient causal inference; soon to be published on arXiv).
+The study is an observational study using Swedish register data from Statistics Sweden and the Swedish Nationa Board of Health and Welfare. 
+
 ### Retirement indicator
 
 Two different criteria have been created to classify individuals as
