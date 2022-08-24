@@ -67,13 +67,21 @@ in 1946 and 1947 and survived till sixty one.
 
 Here is the code for running Cnn based aipw estimator for the average
 treatment effect on the treated. One can define any arbitrary deep
-neural network architecture and pass it to the function. though here we
-just used the default architecture that is convolutional with two layers
-with 128 and 64 filters in the layers respectively.
+neural network architecture and pass it to the function. Models can be created using the Keras package. The outcome model and propensity score are estimated by two different models. The outcome model is a convolutional network with two layers with 128 and 16 filters in the layers respectively. For the propensity score, just 32 and 8 filters were used in two layers.
 Inputted time series can be centralized either columnwise or rowwise by the package. In this case, we have used columnwise centrilization. For both cases, the mean and standard deviation of the vectors are kept as a new variable and are passed to the part of the architecture that handles the scalers as inputs.
 
 ``` r
-ATT = DNNCausal::aipw.att(Y=Observed_outcomes, T=Treatment, X_t=Timeseries_covariates,X = scalar_covariates, verbose=FALSE, epochs = c(64,32), batch_size = 500)
+model_m = keras::keras_model_sequential()
+model_m = keras::layer_conv_1d(model_m, 128,4, padding = 'valid' , activation = 'relu', input_shape = c(10,7))
+model_m = keras::layer_conv_1d(model_m, 16,3, padding = 'same', activation = 'relu')
+model_m = keras::layer_flatten(model_m)
+model_p = keras::keras_model_sequential()
+model_p = keras::layer_conv_1d(model_p, 32,4, padding = 'valid' , activation = 'relu', input_shape = c(10,7))
+model_p = keras::layer_conv_1d(model_p, 8,3, padding = 'same', activation = 'relu')
+model_p = keras::layer_flatten(model_p)
+
+
+ATT = DNNCausal::aipw.att(Y=Observed_outcomes, T=Treatment, X_t=Timeseries_covariates,X = scalar_covariates, model = c(model_m, model_p), do_standardize = 'Column', verbose=FALSE, epochs = c(64,32), batch_size = 500)
 ```
 
 For running this model the following hyperparameters have been chosen.
