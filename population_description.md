@@ -12,16 +12,16 @@ Two income from work definition were used and both gave similar results (the sec
 
 First definition:
 
-> I1 = LoneInk+ArbLos+AmPol+Fortid+FInk+SjukSum\_belop,
+> **I1** = **LoneInk**+**ArbLos**+**AmPol**+**Fortid**+**FInk**+**SjukSum\_belop**,
 
 where the variables from the LISA register at Statistics Sweden:
 
--   LoneInk: Cash gross salary
--   ArbLos: Total income caused by unemployment
--   AmPol: Total income caused by labor market policy measures
--   Fortid: Total income caused by early retirement/sickness benefit
--   Fink: Surplus income from active business activities
--   SjukSum\_belop: Sums the amount paid for types of compensation of
+-   **LoneInk**: Cash gross salary
+-   **ArbLos**: Total income caused by unemployment
+-   **AmPol**: Total income caused by labor market policy measures
+-   **Fortid**: Total income caused by early retirement/sickness benefit
+-   **Fink**: Surplus income from active business activities
+-   **SjukSum\_belop**: Sums the amount paid for types of compensation of
     illnesses during the year that has been transferred to sickness
     benefit, preventive sickness benefit, occupational injury benefit,
     and/or rehabilitation benefit.
@@ -32,10 +32,10 @@ In the second definition, the value **CSFVI** is considered, which corresponds t
 all recorded taxable incomes and is obtained from the Income and Taxation Register (IoT)
 register at Statistics Sweden. 
 
-Transfers from old-age pensions is obtained from the variable Aldpens (from LISA).
+Transfers from old-age pensions is obtained from the variable **Aldpens** (from LISA).
 
-We then use the relative differences: **P/ (I1 +1)** and **P/ (I2 +1)**, where P is the
-**Aldpens** and I2 is Max(0, CSFVI - P).
+We then use the relative differences: **P/ (I1 +1)** and **P/ (I2 +1)**, where **P** is the
+**Aldpens** and **I2** is Max(0, **CSFVI** - **P**).
 
 Finally, an individual is considered treated (retiree at age 62) if alive and
 **P/ (I2 +1)** was below one before that age and above one at age 62. 
@@ -46,17 +46,17 @@ Gender, Marriage status, municipality, education level, and the number of
 biological children. Besides these scalar variables, we control for
 time series data:
 
--   Log of LoneInk: (10 years before treatment)
--   AldPens (10 years before treatment)
--   Unemployment = ArbLos+AmPol (10 years before treatment)
--   Fortid (10 years before treatment)
--   SjukSum\_Belopp (10 years before treatment)
--   Par\_SV (number of Inpatient care days per year, 10 years)
--   Par\_OV (number of Specialized outpatient care dats per year, 10 years)
+-   Log of **LoneInk**: (10 years before treatment)
+-   **AldPens** (10 years before treatment)
+-   **Unemployment** = **ArbLos**+**AmPol** (10 years before treatment)
+-   **Fortid** (10 years before treatment)
+-   **SjukSum\_Belopp** (10 years before treatment)
+-   **Par\_SV** (number of Inpatient care days per year, 10 years)
+-   **Par\_OV** (number of Specialized outpatient care dats per year, 10 years)
 -   Spouse retirement (a time series that shows the state of the
     spouse’s retirement status using the above definition of retirement, 10 years)
 
-The variables Par\_SV and Par\_OV were provided by the Swedish National Board of Health and Welfare.
+The variables **Par\_SV** and **Par\_OV** were provided by the Swedish National Board of Health and Welfare.
 
 ### CNN Architecture
 
