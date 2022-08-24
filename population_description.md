@@ -70,6 +70,7 @@ treatment effect on the treated. One can define any arbitrary deep
 neural network architecture and pass it to the function. though here we
 just used the default architecture that is convolutional with two layers
 with 128 and 64 filters in the layers respectively.
+Inputted time series can be centralized either columnwise or rowwise by the package. In this case, we have used columnwise centrilization. For both cases, the mean and standard deviation of the vectors are kept as a new variable and are passed to the part of the architecture that handles the scalers as inputs.
 
 ``` r
 ATT = DNNCausal::aipw.att(Y=Observed_outcomes, T=Treatment, X_t=Timeseries_covariates,X = scalar_covariates, verbose=FALSE, epochs = c(64,32), batch_size = 500)
