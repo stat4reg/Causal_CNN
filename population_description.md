@@ -48,10 +48,10 @@ biological children.
 -   Birthyear: 1946 or 1947
 -   Marriage status: Maried, Other(Single, Divorced, ...)
 -   Municipality: Is it abig city(Stockholm, Gutenberg, Malmo), or not
--   Education level: 
--   -   0 Pre-secondary education shorter than 9 years, and Pre-secondary education 9 years
--   -   1 Upper secondary education of a maximum of 2 years, and Secondary education 3 years
--   -   2 Post-secondary education shorter than 3 years, Post-secondary education 3 years or longer, and Postgraduate education
+-   Education level, and Spouse education level: 
+    -   0 Pre-secondary education shorter than 9 years, and Pre-secondary education 9 years
+    -   1 Upper secondary education of a maximum of 2 years, and Secondary education 3 years
+    -   2 Post-secondary education shorter than 3 years, Post-secondary education 3 years or longer, and Postgraduate education
 
 
 Besides these scalar variables, we control for
