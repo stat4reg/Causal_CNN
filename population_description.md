@@ -42,8 +42,16 @@ Finally, an individual is considered treated (retiree at age 62) if alive and
 
 
 Pre-treatment covariates that are considered as potential confounders in the study are:
-Gender, Marriage status, municipality, education level, and the number of
-biological children. Besides these scalar variables, we control for
+Birthyear, Marriage status, Municipality, Education level, Spouse education level, and the number of
+biological children.
+
+-   Birthyear: 1946 or 1947
+-   Marriage status: Maried, Other(Single, Divorced, ...)
+-   Municipality: Is it abig city(Stockholm, Gutenberg, Malmo), or not
+-   Education level: 
+
+
+Besides these scalar variables, we control for
 time series data:
 
 -   Log of **LoneInk**: (10 years before treatment)
