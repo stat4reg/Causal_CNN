@@ -23,7 +23,7 @@ source('sandImpACT.R')
 DGPs
 ----
 
-Three different Data generating processes were considered in the
+Two different Data generating processes were considered in the
 simulation study. 
 
 ### First DGP
