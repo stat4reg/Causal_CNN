@@ -133,7 +133,7 @@ DGP_2 <- function(N) {
   return(list(x=cbind(x1=x1,x2=x2,x3=x3,x4=x4,x5=x5,x6=x6,x7=x7,x8=x8,x9=x9,x10=x10),y0=y0,y1=y1, T=Tr, p = prob,y=Y))
 }
 ```
-
+<!---
 ### Third DGP
 
 ``` r
@@ -211,6 +211,7 @@ DGP_4 <- function(N) {
   return(list(x=cbind(x1=x1,x2=x2,x3=x3,x4=x4,x5=x5,x6=x6,x7=x7,x8=x8,x9=x9,x10=x10),y0=y0,y1=y1, T=Tr, p = prob,y=Y))
 }
 ```
+--->
 
 The R function to run the simulations
 -----------------------
