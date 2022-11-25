@@ -7,7 +7,7 @@ Simulation
 Below are the packages that are neccesary for running the simulation study.
 
 ``` r
-library(DNNCausal)
+library(DNNCausal)       # available at: github.com/stat4reg/DNNCausal
 library(tmle)
 library(xtable)
 library(glmnet)
