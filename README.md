@@ -57,8 +57,8 @@ DGP_1 <- function(N) {
   m0 = f0(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10)
   m1 = f1(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10) 
   
-  e0 = rnorm(N, mean = 0, sd = 1)
-  e1 = rnorm(N, mean = 0, sd = 1)
+  e0 = rnorm(N, mean = 0, sd = 13)
+  e1 = rnorm(N, mean = 0, sd = 13)
   
   y0 = m0 + e0
   y1 = m1 + e1
