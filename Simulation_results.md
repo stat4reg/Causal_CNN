@@ -1,7 +1,7 @@
 Simulation results
 ----------
 
-Here are the results of the simulations described in ReadMe. Moreover, the results of the same simulations are also presented with a long tail Gamma distribution for outcome error terms.
+Here are the results of the simulations described in ReadMe. Moreover, the results of the same simulations are also presented with a heavy-tailed Gamma distribution for outcome error terms.
 
 ### Normally distributed error terms
 ----
