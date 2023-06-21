@@ -307,5 +307,6 @@ Now everything is ready and just calling the simulation function is
 needed.
 
 ``` r
-sfinal = simulation_final(rep = 100, FUN =DGP_1)
+result_DGP1 = simulation(rep = 100, FUN =DGP_1)
+result_DGP2 = simulation(rep = 100, FUN =DGP_2)
 ```
