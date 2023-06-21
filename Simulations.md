@@ -1,3 +1,11 @@
+Architecture and hyperparameters
+----------
+
+For FNN and CNN we need to choose an architecture (number of layers and number of neurons per layers, and for CNN filter size $s$ as well) and hyperparameters (epoch size, batch size, learning rate). Number of layers was arbitrarily set to two (deeper NN would imply heavy computational costs in a simulation study). Number of neurons per layers for CNN was chosen to optimize prediction performance of the nuisance models on training data for one replication (kept then fixed for all replications). For FNN, the number of neurons per layers was chosen to make sure that the number of free parameters is the same for FNN and CNN. Filter size for CNN was fixed to $s=4$ for first layer and 3 for the second layer, which somehow corresponds to the filters defining the DGP of setting two although importantly the latter are non-linear.  
+Finally, hyperparameters were chosen as number of neurons per layers, i.e. by to optimize prediction performance of the nuisance models on training data for one replication (kept then fixed for all replications).
+
+
+
 Simulation results
 ----------
 
