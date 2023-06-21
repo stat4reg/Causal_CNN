@@ -217,8 +217,8 @@ The R function to run the simulations
 -----------------------
 
 ``` r
-simulation_final=function(rep=1000, n = 10000, k= 10, FUN){
-  set.seed(1169876)
+simulation_final=function(rep=1000, n = 10000, k= 10,seed = 1169876, FUN){
+  set.seed(seed)
   post_lasso=list()
   att_list=c()
   aipwCNN = list()
