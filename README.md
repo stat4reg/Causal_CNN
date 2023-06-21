@@ -14,10 +14,10 @@ library(glmnet)
 library(MASS)
 library(hdm)
 ```
-
+Performing the post-lasso methods requires the following functions from the package 'hdim.ui', which is accessible from the GitHub page: 'github.com/stat4reg/hdim.ui'. 
 ``` r
-source('lasso_ATT.R')
-source('sandImpACT.R')
+source('lasso_ATT.R')    # available at: github.com/stat4reg/hdim.ui
+source('sandImpACT.R')   # available at: github.com/stat4reg/hdim.ui
 ```
 
 DGPs
