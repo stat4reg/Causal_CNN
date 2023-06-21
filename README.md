@@ -30,7 +30,8 @@ simulation study.
 
 ``` r
 DGP_1 <- function(N) {
-
+  
+  # generate the covariates
   x1 = rnorm(N, 100, 20)
   x2 = rnorm(N, 102, 15)
   x3 = rnorm(N, 105, 13)
@@ -42,34 +43,35 @@ DGP_1 <- function(N) {
   x9 = rnorm(N, 117, 11)
   x10 = rnorm(N, 119, 8)
   
-  
-  
+  # define the outcome models
   f0 = function(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10){
-    
     return(1+0.001*((x2-x1)^2+(x4-x3)^3+ (x6-x5)^2+(x8-x7)^3+(x10-x9)^2))
-    
   }
   f1 = function(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10){
-    
     return(2-0.001*((x2-x1)^2+(x4-x3)^3+ (x6-x5)^2+(x8-x7)^3+(x10-x9)^2))
   }
   
+  # call the outcome models on generated covariates
   m0 = f0(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10)
   m1 = f1(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10) 
   
+  # generate outcome errors from random variables with a normal distribution
   e0 = rnorm(N, mean = 0, sd = 13)
   e1 = rnorm(N, mean = 0, sd = 13)
   
+  # simulate the potential outcomes
   y0 = m0 + e0
   y1 = m1 + e1
   
+  # generate treatment probabilities
   prob = 1/(1+exp(0.000005*(  (x2-x1)^2+(x4-x3)^3+(x6-x5)^2+(x8-x7)^3+(x10-x9)^2  )))
-
+  
+  # simulate the exposure level based on the probabilities 
   Tr = rbinom(N, 1, prob)
-
   
+  # form the observed outcome
   Y = Tr * y1 + (1 - Tr) * y0
-  
+  # return the list of covariates, observed outcome, and treatment level
   return(list(x=cbind(x1=x1,x2=x2,x3=x3,x4=x4,x5=x5,x6=x6,x7=x7,x8=x8,x9=x9,x10=x10),y0=y0,y1=y1, T=Tr, p = prob,y=Y))
 }
 ```
@@ -79,6 +81,7 @@ DGP_1 <- function(N) {
 ``` r
 DGP_2 <- function(N) {
   
+  # generate the covariates
   x1 = rnorm(N, 100, 20)
   x2 = rnorm(N, 102, 15)
   x3 = rnorm(N, 105, 13)
@@ -89,47 +92,47 @@ DGP_2 <- function(N) {
   x8 = rnorm(N, 115, 13)
   x9 = rnorm(N, 117, 11)
   x10 = rnorm(N, 119, 8)
-
   
+  # define the non-linear step functions that will be used in the outcome models
   I1 = function(x,y,z,w){
     return(10*(((y-x)/x) > .15 & ((z-y)/y) > .15 & ((w-z)/z) > .15 ))
-    
   }
   I2 = function(x,y,z,w){
     return(5*(((y-x)/x) < .05 & ((z-y)/y) < .05 & ((w-z)/z) < .05))
-    
   }
   I3 = function(x,y,z,w){
     return(3*(sign(y - 1.1*x)*sign(z - 1.1*y) ==-1 & sign(y - 1.1*x)*sign(z - 1.1*y) ==-1) )
   }
   
-  
+  # define the outcome models
   f0 = function(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10){
-    
-    return(1+
-             1*(   I1(x1,x2,x3,x4) + I2(x4,x5,x6,x7) + I3(x6,x7,x8,x9) ))
+    return(1 + 1*(I1(x1,x2,x3,x4) + I2(x4,x5,x6,x7) + I3(x6,x7,x8,x9) ))
   }
   f1 = function(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10){
-    
-    return(2-1*(   I1(x1,x2,x3,x4) + I2(x4,x5,x6,x7) +I3(x6,x7,x8,x9) ))
+    return(2 - 1*(I1(x1,x2,x3,x4) + I2(x4,x5,x6,x7) +I3(x6,x7,x8,x9) ))
   }
   
+  # call the outcome models on generated covariates
   m0 = f0(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10)
   m1 = f1(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10) 
   
+  # generate outcome errors from random variables with a normal distribution
   e0 = rnorm(N, mean = 0, sd = 1)
   e1 = rnorm(N, mean = 0, sd = 1)
   
+  # simulate the potential outcomes
   y0 = m0 + e0
   y1 = m1 + e1
   
+  # generate treatment probabilities
   prob = 1/(1+1*exp(.1*(0.05*x5 - I1(x1,x2,x3,x4) + I2(x4,x5,x6,x7) +  I3(x6,x7,x8,x9)   )  ))
+  # simulate the exposure level based on the probabilities 
   Tr = rbinom(N, 1, prob)
   
+  # form the observed outcome
   Y = Tr * y1 + (1 - Tr) * y0
-  mean(y1)-mean(y0)
-  mean(Y[Tr==1])- mean(Y[Tr==0])
   
+  # return the list of covariates, observed outcome, and treatment level
   return(list(x=cbind(x1=x1,x2=x2,x3=x3,x4=x4,x5=x5,x6=x6,x7=x7,x8=x8,x9=x9,x10=x10),y0=y0,y1=y1, T=Tr, p = prob,y=Y))
 }
 ```
