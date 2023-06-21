@@ -217,8 +217,10 @@ The R function to run the simulations
 -----------------------
 
 ``` r
-simulation_final=function(rep=1000, n = 10000, k= 10,seed = 1169876, FUN){
+
+simulation=function(rep=1000, n = 10000, k= 10,seed = 1169876, FUN){
   set.seed(seed)
+  # defining lists to store the results of replications
   post_lasso=list()
   att_list=c()
   aipwCNN = list()
@@ -226,41 +228,34 @@ simulation_final=function(rep=1000, n = 10000, k= 10,seed = 1169876, FUN){
   
   
   for (i in 1:rep) {
+    # generate data with the DGP function 
     data = FUN(n)
-    # pr = data$p 
-    # min(pr)
-    # max(pr)
-    # min(pr[data$T==1])
-    #####
     
+    # remove objects that have been defined in the previous iteration to make sure that Keras use them in the current iteration.
     optimizer_m = NULL
     optimizer_p = NULL
-    
     optimizer = NULL
-    
     optimizer1_m = NULL
     optimizer1_p = NULL
-    
     optimizer1 = NULL
+    model_m = NULL
+    model_p = NULL
+    model1_m = NULL
+    model1_p = NULL
     
+    # call the garbage collector to avoid overstack flow
+    gc()
     
-    
-    
+    # define optimizer functions
     optimizer_m = keras::optimizer_adam(lr = 0.003)
     optimizer_p = keras::optimizer_adam(lr = 0.003)
-    
     optimizer = c(optimizer_m, optimizer_p)
-    
     optimizer1_m = keras::optimizer_adam(lr = 0.003)
     optimizer1_p = keras::optimizer_adam(lr = 0.003)
-    
     optimizer1 = c(optimizer1_m, optimizer1_p)
     
     
-    
-    model_m = NULL
-    model_p = NULL
-    gc()
+    # define the models using keras sequential model
     model_m = keras::keras_model_sequential()
     model_p = keras::keras_model_sequential()
     model_m =  keras::layer_conv_1d(model_m,128,4,padding = 'valid',activation = "relu",input_shape = c(k,1))
@@ -271,48 +266,38 @@ simulation_final=function(rep=1000, n = 10000, k= 10,seed = 1169876, FUN){
     model_p =  keras::layer_conv_1d(model_p,8,3,padding = 'same',activation = "relu")
     model_p =  keras::layer_flatten(model_p)
     
-    model1_m = NULL
-    model1_p = NULL
-    gc()
     model1_m = keras::keras_model_sequential()
     model1_p = keras::keras_model_sequential()
     model1_m =  keras::layer_dense(model1_m,128,activation = "relu",input_shape = k)
     model1_m =  keras::layer_dense(model1_m,80,activation = "relu")
     
-    
     model1_p =  keras::layer_dense(model1_p,32,activation = "relu",input_shape = k )
     model1_p =  keras::layer_dense(model1_p,8,activation = "relu")
     
-    
+    # perform post lasso estimations
     apr_data= list('X'=as.matrix(data$x) ,'Y'=data$y ,'T'= as.logical(data$T))
     post_la=simulation_postlasso(apr_data)
     post_lasso[[i]]=((results_post_lasso(post_la))) 
+    
+    # store the real ATT
     att_list[i]= mean(data$y1[data$T==1]-data$y0[data$T==1])
-    ####
     
-    
+    # perform the CNN estimator
     aipwCNN[[i]] = aipw.att(data$y,as.logical(data$T), X_t = list(data$x) ,model =c(model_m,model_p),
                             optimizer = optimizer,epochs = c(100,50),batch_size = 1000,verbose = FALSE,
                             use_scalers = FALSE, debugging = FALSE,rescale_outcome = TRUE,
                             do_standardize ="Column" )#,X_r"Column"
     
+    # perform the FNN estimator
     aipwfNN[[i]] = aipw.att(data$y,as.logical(data$T), X_t = data$x ,model =c(model1_m,model1_p),
                             optimizer = optimizer1,epochs = c(100,50),batch_size = 1000,verbose = FALSE,
                             use_scalers = FALSE, debugging = FALSE,rescale_outcome = TRUE,
                             do_standardize = "Column")#,X_r"Column"
     
-    # 
-    cat('\n')
-    cat(i)
-    cat('\n')
-    cat(aipwCNN[[i]]$ATT)
-    cat('\n')
-    cat(aipwfNN[[i]]$ATT)
-    cat('\n')
-    cat(att_list[i])
-    cat('\n')
   }
-  return(list('post_lasso' = post_lasso, 'real_ATT' = att_list, 'CNN_ATT' = aipwCNN, 'FNN_ATT' = aipwfNN))}
+  # return the list of results
+  return(list('post_lasso' = post_lasso, 'real_ATT' = att_list, 'CNN_ATT' = aipwCNN, 'FNN_ATT' = aipwfNN))
+}
 ```
 
 Now everything is ready and just calling the simulation function is
