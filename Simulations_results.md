@@ -1,4 +1,4 @@
-This file contains supplementary material on the simulation experiments reported in Ghasempour, Moosavi and de Luna (2023, Convolutional neural networks for valid and efficient causal inference; arXiv version).
+This file contains supplementary material on the simulation experiments reported in Ghasempour, Moosavi and de Luna (2023, Convolutional neural networks for valid and efficient causal inference; [arXiv version](https://arxiv.org/abs/2301.11732)).
 
 Architecture and hyperparameters
 ----------
