@@ -1,5 +1,5 @@
 This file contains supplementary material on the design of the study of the effects of early retirement on health
-reported in Ghasempour, Moosavi and de Luna (2022, Convolutional neural networks for valid and efficient causal inference; soon to be published on arXiv).
+reported in Ghasempour, Moosavi and de Luna (2023, Convolutional neural networks for valid and efficient causal inference; [arXiv version](https://arxiv.org/abs/2301.11732)).
 The study is an observational study using Swedish register data from Statistics Sweden and the Swedish Nationa Board of Health and Welfare, which were linked at the individual level at the Umeå SIMSAM Lab (https://www.umu.se/forskning/infrastruktur/umea-simsam-lab/), were the data is available.
 
 To study the effects of early retirement we consider those who were still alive at age 62, and either retire at age 62 ($T=1$, treatment) or retire later ($T=0$, control group). 
