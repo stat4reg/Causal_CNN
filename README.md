@@ -1,5 +1,5 @@
 This repository includes supplementary material to the manuscript 
-Ghasempour, Moosavi and de Luna (2023, Convolutional neural networks for valid and efficient causal inference; [arXiv version](https://arxiv.org/abs/2301.11732)).
+Ghasempour, Moosavi and de Luna (2023, [Convolutional neural networks for valid and efficient causal inference](https://www.tandfonline.com/doi/full/10.1080/10618600.2023.2257247); [arXiv version](https://arxiv.org/abs/2301.11732)).
 
 Simulations
 ----------
